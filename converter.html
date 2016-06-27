@@ -1,0 +1,117 @@
+﻿<html>
+  <head>
+    <title>Fast Euros Converter</title>
+
+    <link rel="stylesheet" type="text/css" href="world.css" />
+
+    <script type="text/javascript">
+      function convertEuros(){
+        const FACTORCFA = 656;
+        const FACTORUS = 1.10;
+        const FACTORYEN = 131;
+        const FACTORAUS = 1.44;
+        const FACTORZAR = 13.02;
+        const FACTORYUAN = 6.74;
+        const FACTORUSS = 61.41;
+        
+        
+        var cfa = 0;
+        var yuan = 0;
+        var us = 0;
+        var yen = 0;
+        var zar = 0;
+        var aus = 0;
+        var run = 0;
+
+        var vareuros= 0;
+        var vareuros = eurosParsen(document.getElementById("euros").value);
+  
+        if(isNaN(vareuros))
+          vareuros =0;
+        
+         var cfa = vareuros * FACTORCFA;
+         var yuan = vareuros * FACTORYUAN;
+         var us = vareuros* FACTORUS;
+         var yen = vareuros* FACTORYEN;
+         var aus = vareuros* FACTORAUS;
+         var zar = vareuros* FACTORZAR;
+         var rub = vareuros* FACTORUSS;
+
+    
+        document.getElementById("cfa").value = "CFA" + cfa.toFixed(2);
+        document.getElementById("yuan").value = "Chinese Yuan" + yuan.toFixed(2);
+        document.getElementById("us").value = "$" + us.toFixed(2);
+        document.getElementById("yen").value = "¥" + yen.toFixed(2);
+        document.getElementById("aus").value = "AU$" + aus.toFixed(2);
+        document.getElementById("zar").value = " ZAR" + zar.toFixed(2);
+        document.getElementById("rub").value = "RUB" + rub.toFixed(2);
+        
+      }
+
+
+      function eurosParsen(euroString){
+        vareuros = parseInt(euroString);
+        if(euroString.indexOf("thousand") != -1)
+          vareuros *= 1000;
+        return vareuros;
+      }
+
+      function dataValidate(form) {
+        // Communicate information to the server .
+
+         if( document.getElementById("euros").value =="" ||
+          isNaN(document.getElementById("euros").value) )
+        alert("Please you have to give the amount in euros you want to convert in the correct form, it is also possible to use the suffix thousand");
+        else
+          //Send information to the server
+        form.submit();    
+      }
+
+
+    </script>
+  </head>
+
+  <body>
+    <div id="frame">
+      <div class="heading">Fast Money Value Converter</div>
+      <div class="subheading">Convert the value of the euros in some important continental values</div>
+      <div id="left">
+        <img src="world.jpg" alt="Fast Euros Converter" />
+      </div>
+      <form name="formular" action="converter.php" method="POST">
+
+        <div class="field">
+        Anzahl euros: <input type="text" id="euros" name="euros" value=""
+          onchange="convertEuros();" />
+        </div>
+        
+       
+        <div class="field">
+        Anzahl Central african CFA: <input type="text" id="cfa" name="cfa" value="" readonly="readonly" />
+        </div>
+        <div class="field">
+        Anzahl Chinese Yuan: <input type="text" id="yuan" name="yuan" value="" readonly="readonly" />
+        </div>
+        <div class="field">
+        Anzahl dollars US: <input type="text" id="us" name="us" value="" readonly="readonly" />
+        </div>
+        <div class="field">
+        Anzahl dollars Australia: <input type="text" id="aus" name="aus" value="" readonly="readonly" />
+        </div>
+        <div class="field">
+        Anzahl ZAR South African Rand: <input type="text" id="zar" name="zar" value="" readonly="readonly" />
+        </div>
+        <div class="field">
+          <div class="field">
+        Anzahl Japanese Yen: <input type="text" id="yen" name="yen" value="" readonly="readonly" />
+        </div>
+        <div class="field">
+          <div class="field">
+        Anzahl Russland Rubel: <input type="text" id="rub" name="rub" value="" readonly="readonly" />
+        </div>
+        <input type="button" value="Convert" onclick="dataValidate(this.formular);" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
