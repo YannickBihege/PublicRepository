@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="WindowsPlatformBrowser.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsPlatformBrowser"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <AppBar IsOpen="True" IsSticky="True">
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton x:ConnectionId='1' Icon="Back" Label="Back"                   />
+                <AppBarButton x:ConnectionId='2' Icon="Forward" Label="Forward"                      />
+                <AppBarButton x:ConnectionId='3' Icon="Refresh" Label="Refresh"                      />
+                <AppBarButton x:ConnectionId='4' Icon="Cancel" Label="Stop"                   />
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox x:ConnectionId='5' Grid.Row="0" Margin="20" Name="Value" VerticalAlignment="Center" InputScope="Url"                     />
+            <WebView x:ConnectionId='6' Grid.Row="1" Margin="20" Name="Display"                                              />
+        </Grid>
+
+
+    </Grid>
+</Page>
+
